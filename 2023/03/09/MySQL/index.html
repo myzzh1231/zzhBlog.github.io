@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>zzhBlog</title><meta name="author" content="郑 则弘"><meta name="copyright" content="郑 则弘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQLJAVAEE： 企业级开发 WEB 前端:（页面:展示,数据） 后台 :(连接点：连接数据库：jdbc，连接前端（控制，控制视图跳转，和前端传递数据）) 数据库:(存数据，TXT ，excel word) RDBMS 术语 数据库: 数据库是一些关联表的集合。 数据表: 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。 列: 一列(数据元素) 包含了相同类型的数据, 例如邮">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zzhBlog">
+<meta property="og:url" content="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/MySQL/index.html">
+<meta property="og:site_name" content="zzhBlog">
+<meta property="og:description" content="MySQLJAVAEE： 企业级开发 WEB 前端:（页面:展示,数据） 后台 :(连接点：连接数据库：jdbc，连接前端（控制，控制视图跳转，和前端传递数据）) 数据库:(存数据，TXT ，excel word) RDBMS 术语 数据库: 数据库是一些关联表的集合。 数据表: 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。 列: 一列(数据元素) 包含了相同类型的数据, 例如邮">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://myzzh1231.github.io/zzhBlog.github.io/images/background.jpg">
+<meta property="article:published_time" content="2023-03-09T06:49:42.268Z">
+<meta property="article:modified_time" content="2022-01-01T14:35:52.730Z">
+<meta property="article:author" content="郑 则弘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myzzh1231.github.io/zzhBlog.github.io/images/background.jpg"><link rel="shortcut icon" href="/zzhBlog.github.io/img/favicon.png"><link rel="canonical" href="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/MySQL/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/zzhBlog.github.io/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/zzhBlog.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 郑 则弘","link":"链接: ","source":"来源: zzhBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'zzhBlog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-01 22:35:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="is-center"><div class="avatar-img"><img src="/zzhBlog.github.io/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">郑 则弘</div><div class="author-info__description"></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/chenxz21/bcxm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/archives/"><i class="fa-fw fas fa-clock"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/shuoba"><i class="fa-fw fas fa-comment-dots"></i><span> 说吧</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/gedan"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/game"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/artitalk"><i class="fa-fw fa fa-heartbeat"></i><span> 时光</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zzhBlog.github.io/google"><span> 镜像</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://json.xbyzs.cf"><span> Json格式化</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://draw.xbyzs.cf"><span> Draw画布</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://enkey.xbyzs.cf"><span> EnKey</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/zzhBlog.github.io/">zzhBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/archives/"><i class="fa-fw fas fa-clock"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/shuoba"><i class="fa-fw fas fa-comment-dots"></i><span> 说吧</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/gedan"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/game"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/artitalk"><i class="fa-fw fa fa-heartbeat"></i><span> 时光</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zzhBlog.github.io/google"><span> 镜像</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://json.xbyzs.cf"><span> Json格式化</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://draw.xbyzs.cf"><span> Draw画布</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://enkey.xbyzs.cf"><span> EnKey</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2023-03-09T06:49:42.268Z" title="发表于 2023-03-09 14:49:42">2023-03-09</time></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>JAVAEE： 企业级开发 WEB</p>
+<p>前端:（页面:展示,数据）</p>
+<p>后台 :(连接点：连接数据库：jdbc，连接前端（控制，控制视图跳转，和前端传递数据）)</p>
+<p>数据库:(存数据，TXT ，excel word)</p>
+<h2 id="RDBMS-术语"><a href="#RDBMS-术语" class="headerlink" title="RDBMS 术语"></a>RDBMS 术语</h2><ul>
+<li><strong>数据库:</strong> 数据库是一些关联表的集合。</li>
+<li><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
+<li><strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
+<li><strong>行：</strong>一行（&#x3D;元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
+<li><strong>冗余</strong>：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
+<li><strong>主键</strong>：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。</li>
+<li><strong>外键：</strong>外键用于关联两个表。</li>
+<li><strong>复合键</strong>：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
+<li><strong>索引：</strong>使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。</li>
+<li><strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
+</ul>
+<h1 id="1-什么是数据库"><a href="#1-什么是数据库" class="headerlink" title="1.什么是数据库"></a>1.什么是数据库</h1><p>概念:数据仓库，软件，安装在操作系统之上，SQL，可以存储大量的数据</p>
+<p>(DB database)</p>
+<p>作用:存储数据，管理数据</p>
+<h2 id="1-1-DBMS-数据库管理系统"><a href="#1-1-DBMS-数据库管理系统" class="headerlink" title="1.1 DBMS(数据库管理系统)"></a>1.1 DBMS(数据库管理系统)</h2><p>数据库分类:（SQL）</p>
+<ul>
+<li>​	关系型数据库<ul>
+<li>MySQL Oracle sql server DB2  SQLlite</li>
+<li>通过表和表之间，行和列之间的关系进行数据的存储，学员信息表，考勤表</li>
+</ul>
+</li>
+<li>非关系型数据库（NOSQL） Not Only SQL<ul>
+<li>Redis，MongoDB</li>
+<li>非关系型数据库，对象存储，通过对象的自身的属性来决定</li>
+</ul>
+</li>
+</ul>
+<p><strong>DBMS(数据库管理系统)</strong></p>
+<ul>
+<li>数据库管理软件，科学有效的管理我们的数据，维护和获取数据</li>
+<li>MySQL，数据库管理系统</li>
+</ul>
+<h1 id="2-MySQL"><a href="#2-MySQL" class="headerlink" title="2.MySQL"></a>2.MySQL</h1><p><strong>MySQL是一个关系型数据库管理系统</strong>，由瑞典[MySQL AB](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/MySQL">https://baike.baidu.com/item/MySQL</a> AB&#x2F;2620844) 公司开发，属于 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Oracle">Oracle</a> 旗下产品。MySQL 是最流行的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/696511">关系型数据库管理系统</a>之一，在 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/WEB/150564">WEB</a> 应用方面，<strong>MySQL是最好的 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/RDBMS/1048260">RDBMS</a> (Relational Database Management System，关系数据库管理系统)</strong> 应用软件之一。</p>
+<p>体积小，速度快，总体拥有成本低</p>
+<p>适用于中小型网站，或者大型网站</p>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><blockquote>
+<p>mysql -uroot -p  –链接数据库</p>
+<p>update user set password&#x3D;password(‘123’) where user&#x3D;’root’ and host&#x3D;’localhost’; —修改root用户登录密码</p>
+<hr>
+<p>–所有的语句都用；结尾</p>
+<p>show databases; –查看所有数据库</p>
+<p>mysql&gt; use drug;<br>Database changed  –切换数据库 use 数据库名</p>
+<p>show tables; –查看数据库里面所有的表</p>
+<p>describe owinfo; –显示数据库中指定表的信息</p>
+<hr>
+<p>create database westos; –创建一个数据库</p>
+<p>exit; 退出连接</p>
+<p>–&#x3D;# ：都是单行注释</p>
+<p>&#x2F;*</p>
+<p>(多行注释)</p>
+<p>*&#x2F;</p>
+</blockquote>
+<h1 id="CRUD-增删改查"><a href="#CRUD-增删改查" class="headerlink" title="CRUD 增删改查"></a>CRUD 增删改查</h1><p>DDL (数据库定义语言)</p>
+<p>DML(数据库操作语言)</p>
+<p>DQL(数据库查询语言)</p>
+<p>DCL(数据库控制语言)</p>
+<h1 id="3-操作数据库"><a href="#3-操作数据库" class="headerlink" title="3.操作数据库"></a>3.操作数据库</h1><p>操作数据库 &gt; 操作数据库中的表 &gt; 操作数据库中的表的数据</p>
+<p><strong>mysql关键字不区分大小写</strong></p>
+<blockquote>
+<p>1.创建数据库</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE if not EXISTS Test;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.删除数据库</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE IF EXISTS Test;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.使用数据库</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">USE drug;</span><br><span class="line">#table上的 `` 如果你的表面或者字段名是一个特殊字符，就需要带 ``</span><br><span class="line"></span><br><span class="line">USE `westos`;</span><br><span class="line"></span><br><span class="line">select username FROM `user`; #查询username信息</span><br><span class="line"></span><br><span class="line">show databases; #查看所有的数据库</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>学习思路:<ul>
+<li>对照navicat可视化历史记录查看sql</li>
+<li>固定的语法或关键字必须要强行记住</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-1-数据库的列类型"><a href="#3-1-数据库的列类型" class="headerlink" title="3.1.数据库的列类型"></a>3.1.数据库的列类型</h2><blockquote>
+<p>数值</p>
+</blockquote>
+<ul>
+<li>tinyint    十分小的数据，         1个字节</li>
+<li>smallint    较小的数据               2个字节</li>
+<li>mediumint 中等大小的数据     3个字节</li>
+<li><strong>int               标准的整数              4个字节</strong></li>
+<li>bigint      较大的数据     8个字节</li>
+<li>float     浮点数    4个字节</li>
+<li>double     浮点数    8个字节’</li>
+<li>decimal   字符串形式的浮点数      金额计算的时候   一般是使用decimal</li>
+</ul>
+<blockquote>
+<p>字符串</p>
+</blockquote>
+<ul>
+<li>char  字符串固定的大小     0-255</li>
+<li>**varchar   可变字符串    0-65535 **     常用的变量 String</li>
+<li>TINYTEXT   微型文本   2^8-1</li>
+<li><strong>text  文本串   2^16-1</strong>  (保存大文本)</li>
+</ul>
+<blockquote>
+<p>时间日期</p>
+</blockquote>
+<p>java.util.Date</p>
+<ul>
+<li>data  YYYY-MM-DD   日期格式</li>
+<li>time   HH:mm:ss  时间格式</li>
+<li><strong>datatime   YYYY-MM-DD   HH:mm:ss   最常用的日期时间格式</strong></li>
+<li><strong>timestamp  时间戳    1970-1-1 为0开始到现在的毫秒数(较为常用)</strong></li>
+<li>year 年份表示</li>
+</ul>
+<blockquote>
+<p>null</p>
+</blockquote>
+<ul>
+<li>没有值，未知</li>
+<li><strong>注意,不要使用NULL进行运算，结果为NULL</strong></li>
+</ul>
+<h2 id="3-2-数据库的字段属性-重点"><a href="#3-2-数据库的字段属性-重点" class="headerlink" title="3.2  数据库的字段属性(重点)"></a>3.2  数据库的字段属性(重点)</h2><p><strong>Unsigned:</strong></p>
+<ul>
+<li>无符号的整数</li>
+<li>声明了该列不能声明为负数</li>
+</ul>
+<p><strong>zerofill</strong></p>
+<ul>
+<li>0填充的</li>
+<li>不足的位数，使用0来填充  int(3)  ,5—&gt;005</li>
+</ul>
+<p><strong>自增</strong></p>
+<ul>
+<li>通常理解为自增，自动在上一条记录的基础上+1（默认，但可以自行修改）</li>
+<li>通常用来设计唯一的主键   ~ index  必须是整数类型</li>
+<li>可以自定义设计主键自增的起始值和步长</li>
+</ul>
+<p><strong>非空(NOT NULL)</strong></p>
+<ul>
+<li>假设设置为 not null ，如果不给他赋值，就会报错</li>
+<li>假设设置为NULL ， 如果不填写值，默认就是null!</li>
+</ul>
+<p><strong>默认</strong></p>
+<ul>
+<li>设置默认的值</li>
+<li>sex(性别) 默认值为  男或女  ,  如果不指定该列的值，则会有默认的值</li>
+</ul>
+<h2 id="3-3-创建数据库"><a href="#3-3-创建数据库" class="headerlink" title="3.3 创建数据库"></a>3.3 创建数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	##注意点使用英文符号</span><br><span class="line">	##字符串使用单引号括起来</span><br><span class="line">	##所有的语句后面加(,)最好一个不用</span><br><span class="line">create table if not EXISTS `Students`(</span><br><span class="line">	`id` int(4) not null auto_increment COMMENT &#x27;学号&#x27;,</span><br><span class="line">	`pwd` varchar(20) not null DEFAULT &#x27;123456&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">	`name` varchar(10) not null DEFAULT &#x27;匿名&#x27; comment &#x27;姓名&#x27; ,</span><br><span class="line">	`sex` varchar(2) not null DEFAULT &#x27;男&#x27; COMMENT &#x27;性别&#x27;,</span><br><span class="line">	`date` DATETIME DEFAULT null COMMENT &#x27;出生日期&#x27;,</span><br><span class="line">	`address` VARCHAR(100) DEFAULT null COMMENT &#x27;家庭住址&#x27;,</span><br><span class="line">	`email` varchar(50) DEFAULT null COMMENT &#x27;邮箱&#x27;,</span><br><span class="line">	PRIMARY KEY(`id`)</span><br><span class="line">)ENGINE=INNODB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+<p>格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table [if not EXISTS] `表面`(</span><br><span class="line">	&#x27;字段名&#x27; 列类型 [属性] [索引] [注释],</span><br><span class="line">    &#x27;字段名&#x27; 列类型 [属性] [索引] [注释],</span><br><span class="line">    &#x27;字段名&#x27; 列类型 [属性] [索引] [注释]</span><br><span class="line">)[表类型] [字符集设置][注释]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>常用命令</p>
+<blockquote>
+<p>show create database school  –查看创建数据库的语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;CREATE DATABASE `school` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION=&#x27;N&#x27; */</span><br></pre></td></tr></table></figure>
+
+
+
+<p>show create table student –查看student数据表的定义语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;CREATE TABLE `students` (</span><br><span class="line"> `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;学号&#x27;,</span><br><span class="line"> `pwd` varchar(20) NOT NULL DEFAULT &#x27;123456&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line"> `name` varchar(10) NOT NULL DEFAULT &#x27;匿名&#x27; COMMENT &#x27;姓名&#x27;,</span><br><span class="line"> `sex` varchar(2) NOT NULL DEFAULT &#x27;男&#x27; COMMENT &#x27;性别&#x27;,</span><br><span class="line"> `date` datetime DEFAULT NULL COMMENT &#x27;出生日期&#x27;,</span><br><span class="line"> `address` varchar(100) DEFAULT NULL COMMENT &#x27;家庭住址&#x27;,</span><br><span class="line"> `email` varchar(50) DEFAULT NULL COMMENT &#x27;邮箱&#x27;,</span><br><span class="line"> PRIMARY KEY (`id`)</span><br><span class="line">&gt;) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+
+
+<p>desc student –显示表的结构</p>
+</blockquote>
+<h2 id="3-4数据表的类型"><a href="#3-4数据表的类型" class="headerlink" title="3.4数据表的类型"></a>3.4数据表的类型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##数据表引擎</span><br><span class="line">/*</span><br><span class="line">	INNODB 默认使用</span><br><span class="line">	MYISAM 早些年使用</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MYISAM</th>
+<th>INNODB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务支持</td>
+<td>x</td>
+<td>√</td>
+</tr>
+<tr>
+<td>数据行锁定</td>
+<td>x</td>
+<td>√</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>x</td>
+<td>√</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>√</td>
+<td>x</td>
+</tr>
+<tr>
+<td>表空间的大小</td>
+<td>较小</td>
+<td>较大约为2倍</td>
+</tr>
+</tbody></table>
+<p>常规使用操作；</p>
+<ul>
+<li>MYISAM  节约空间，速度较快</li>
+<li>INNODB  安全性高，事务的处理，多表多用户操作</li>
+</ul>
+<blockquote>
+<p>在物理空间存在的位置</p>
+</blockquote>
+<p>所有的数据库文件都在data目录下</p>
+<p>本质还是文件的存储</p>
+<p>MySQL引擎在物理文件上的区别</p>
+<ul>
+<li>INNODB在数据库表中只有一个 *.frm文件,以及上级目录的ibdata1文件</li>
+<li>MYISAM 对应的文件<ul>
+<li>*.frm –表结构的定义文件</li>
+<li>*.MYD  数据文件(data)</li>
+<li>*.MYI 索引文件(index)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>设置数据库表的字符集编码</p>
+</blockquote>
+<blockquote>
+<p>charset &#x3D; utf8</p>
+</blockquote>
+<p>不设置的话，会是默认的字符集编码，不支持中文</p>
+<p>MYSQL默认时Latin1</p>
+<p>可在my.ini中配置默认编码(不推荐)</p>
+<blockquote>
+<p>character-set-server&#x3D;utf8</p>
+</blockquote>
+<h2 id="3-5修改删除表"><a href="#3-5修改删除表" class="headerlink" title="3.5修改删除表"></a>3.5修改删除表</h2><blockquote>
+<p>修改</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">##修改表名称  alter table [表名] RENAME as [新表名]</span><br><span class="line">alter table student RENAME as teacher;</span><br><span class="line"></span><br><span class="line">##增加表的字段 alter table [表名] add [字段名 列属性]</span><br><span class="line">alter table teacher add age int(3);</span><br><span class="line"></span><br><span class="line">##修改表的字段(重命名，修改约束)  alter table [表名] MODIFY  [字段名 新的列属性]</span><br><span class="line">ALTER TABLE teacher MODIFY age varchar(3);</span><br><span class="line"></span><br><span class="line">##修改字段名  alter table [表名] CHANGE  [旧表名] [新表名 列属性]</span><br><span class="line">alter table teacher CHANGE age ages int(3);</span><br><span class="line"></span><br><span class="line">##删除表的字段  alter table [表名] drop [字段名]</span><br><span class="line">alter table teacher drop  ages;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>删除</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##删除表(如果存在在删除)</span><br><span class="line">drop TABLE if EXISTS teacher;</span><br><span class="line"></span><br><span class="line">##尽量加上if EXISTS 避免报错</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意点:</p>
+<ul>
+<li>&#96;&#96;字段名，使用这个包裹</li>
+<li>注释  &#x2F;**&#x2F;  ##</li>
+<li>sql关键字大小不敏感，建议使用小写</li>
+<li>全部使用到的符号必须要用英文</li>
+</ul>
+<h1 id="4-MySQL数据管理"><a href="#4-MySQL数据管理" class="headerlink" title="4.MySQL数据管理"></a>4.MySQL数据管理</h1><h2 id="4-1外键-了解即可"><a href="#4-1外键-了解即可" class="headerlink" title="4.1外键(了解即可)"></a>4.1外键(了解即可)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">show create table `students`;</span><br><span class="line"></span><br><span class="line">-- 学生表的gradeId字段 要去引用年纪表的gradeId字段</span><br><span class="line">-- 定义外键key</span><br><span class="line">-- 给这个外键添加约束 (执行引用)  references(引用)</span><br><span class="line"></span><br><span class="line">CREATE TABLE `students` (</span><br><span class="line">  `id` int NOT NULL AUTO_INCREMENT COMMENT &#x27;学号&#x27;,</span><br><span class="line">  `gradeId` int NOT NULL COMMENT &#x27;学号&#x27;,</span><br><span class="line">  `pwd` varchar(20) NOT NULL DEFAULT &#x27;123456&#x27; COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `name` varchar(10) NOT NULL DEFAULT &#x27;匿名&#x27; COMMENT &#x27;姓名&#x27;,</span><br><span class="line">  `sex` varchar(2) NOT NULL DEFAULT &#x27;男&#x27; COMMENT &#x27;性别&#x27;,</span><br><span class="line">  `birthday` datetime DEFAULT NULL COMMENT &#x27;出生日期&#x27;,</span><br><span class="line">  `address` varchar(100) DEFAULT NULL COMMENT &#x27;家庭住址&#x27;,</span><br><span class="line">  `email` varchar(50) DEFAULT NULL COMMENT &#x27;邮箱&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">	KEY `FK_gradeId` (`gradeId`), </span><br><span class="line">	constraint `FK_gradeId` FOREIGN key(`gradeId`) REFERENCES `grade` (`gradeId`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CREATE table `grade`(</span><br><span class="line">	`gradeId` int(10) not null auto_increment comment &#x27;年纪学号&#x27;,</span><br><span class="line">	`gradeName` varchar(10) not null comment &#x27;年纪姓名&#x27;,</span><br><span class="line">	PRIMARY key(`gradeId`)</span><br><span class="line">)ENGINE=INNODB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除有外键的表的时候，必须先删除引用的从表，才能删除该主表</p>
+</blockquote>
+<blockquote>
+<p>创建外键的两种方法</p>
+<ol>
+<li>&#96;&#96;&#96;mysql<br>KEY <code>FK_gradeId</code> (<code>gradeId</code>),<br>constraint <code>FK_gradeId</code> FOREIGN key(<code>gradeId</code>) REFERENCES <code>grade</code> (<code>gradeId</code>)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```mysql</span><br><span class="line">   -- 创建表的时候没有外键关系</span><br><span class="line">   -- 添加外键关系</span><br><span class="line">   -- alter table [表名] </span><br><span class="line">   -- add constraint (`约束名`) foreign key (作为外键的字段名) references `表名`(`字段名`) </span><br><span class="line">   alter table `students` </span><br><span class="line">   add constraint `FK_gradeId` foreign KEY (`gradeId`) references `grade`(`gradeId`)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h2 id="4-2-DML语言-全部记住"><a href="#4-2-DML语言-全部记住" class="headerlink" title="4.2 DML语言(全部记住)"></a>4.2 DML语言(全部记住)</h2><h2 id="4-3添加"><a href="#4-3添加" class="headerlink" title="4.3添加"></a>4.3添加</h2><p>insert into xxx values();</p>
+<h2 id="4-4修改"><a href="#4-4修改" class="headerlink" title="4.4修改"></a>4.4修改</h2><h2 id="4-5删除"><a href="#4-5删除" class="headerlink" title="4.5删除"></a>4.5删除</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">郑 则弘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/MySQL/">https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/MySQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://myzzh1231.github.io/zzhBlog.github.io" target="_blank">zzhBlog</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/zzhBlog.github.io/images/background.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/zzhBlog.github.io/2023/03/09/mysql%E8%B0%83%E4%BC%98/"><img class="prev-cover" src="/zzhBlog.github.io/images/background.jpg" onerror="onerror=null;src='/zzhBlog.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/zzhBlog.github.io/2023/03/09/mybatisl/"><img class="next-cover" src="/zzhBlog.github.io/images/background.jpg" onerror="onerror=null;src='/zzhBlog.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDBMS-%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.1.</span> <span class="toc-text">RDBMS 术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">1.什么是数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-DBMS-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 DBMS(数据库管理系统)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-MySQL"><span class="toc-number">3.</span> <span class="toc-text">2.MySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">数据库操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CRUD-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">5.</span> <span class="toc-text">CRUD 增删改查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.</span> <span class="toc-text">3.操作数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%97%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.</span> <span class="toc-text">3.1.数据库的列类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%97%E6%AE%B5%E5%B1%9E%E6%80%A7-%E9%87%8D%E7%82%B9"><span class="toc-number">6.2.</span> <span class="toc-text">3.2  数据库的字段属性(重点)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">6.3.</span> <span class="toc-text">3.3 创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.4.</span> <span class="toc-text">3.4数据表的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5%E4%BF%AE%E6%94%B9%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="toc-number">6.5.</span> <span class="toc-text">3.5修改删除表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-MySQL%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">4.MySQL数据管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E5%A4%96%E9%94%AE-%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF"><span class="toc-number">7.1.</span> <span class="toc-text">4.1外键(了解即可)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-DML%E8%AF%AD%E8%A8%80-%E5%85%A8%E9%83%A8%E8%AE%B0%E4%BD%8F"><span class="toc-number">7.2.</span> <span class="toc-text">4.2 DML语言(全部记住)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3%E6%B7%BB%E5%8A%A0"><span class="toc-number">7.3.</span> <span class="toc-text">4.3添加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4%E4%BF%AE%E6%94%B9"><span class="toc-number">7.4.</span> <span class="toc-text">4.4修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5%E5%88%A0%E9%99%A4"><span class="toc-number">7.5.</span> <span class="toc-text">4.5删除</span></a></li></ol></li></ol></div></div><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/zzhBlog.github.io/img/avatar.jpg" onerror="this.onerror=null;this.src='/zzhBlog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">郑 则弘</div><div class="author-info__description"></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/chenxz21/bcxm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">微信号: zzh_impl</div></div></div></div></main><footer id="footer" style="background: #FFFFFF"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 郑 则弘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/chenxz21/hexo-theme-bcxm">Bcxm</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/zzhBlog.github.io/js/utils.js"></script><script src="/zzhBlog.github.io/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

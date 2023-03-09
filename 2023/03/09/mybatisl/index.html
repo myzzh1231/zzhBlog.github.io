@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>zzhBlog</title><meta name="author" content="郑 则弘"><meta name="copyright" content="郑 则弘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="*核心配置文件：mybatis-config.xml**1.Mybatis的配置文件*配置 MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。 配置文档的顶层结构如下： configuration（配置）  properties（属性） settings（设置） typeAliases（类型别名） typeHandlers（类型处理器） objectFactory（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zzhBlog">
+<meta property="og:url" content="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/mybatisl/index.html">
+<meta property="og:site_name" content="zzhBlog">
+<meta property="og:description" content="*核心配置文件：mybatis-config.xml**1.Mybatis的配置文件*配置 MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。 配置文档的顶层结构如下： configuration（配置）  properties（属性） settings（设置） typeAliases（类型别名） typeHandlers（类型处理器） objectFactory（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://myzzh1231.github.io/zzhBlog.github.io/images/background.jpg">
+<meta property="article:published_time" content="2023-03-09T06:49:42.263Z">
+<meta property="article:modified_time" content="2021-04-12T00:50:56.434Z">
+<meta property="article:author" content="郑 则弘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myzzh1231.github.io/zzhBlog.github.io/images/background.jpg"><link rel="shortcut icon" href="/zzhBlog.github.io/img/favicon.png"><link rel="canonical" href="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/mybatisl/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/zzhBlog.github.io/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/zzhBlog.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 郑 则弘","link":"链接: ","source":"来源: zzhBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'zzhBlog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-12 08:50:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="is-center"><div class="avatar-img"><img src="/zzhBlog.github.io/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">郑 则弘</div><div class="author-info__description"></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/chenxz21/bcxm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/archives/"><i class="fa-fw fas fa-clock"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/shuoba"><i class="fa-fw fas fa-comment-dots"></i><span> 说吧</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/gedan"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/game"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/artitalk"><i class="fa-fw fa fa-heartbeat"></i><span> 时光</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zzhBlog.github.io/google"><span> 镜像</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://json.xbyzs.cf"><span> Json格式化</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://draw.xbyzs.cf"><span> Draw画布</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://enkey.xbyzs.cf"><span> EnKey</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/zzhBlog.github.io/">zzhBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/archives/"><i class="fa-fw fas fa-clock"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/shuoba"><i class="fa-fw fas fa-comment-dots"></i><span> 说吧</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/gedan"><i class="fa-fw fas fa-music"></i><span> 歌单</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/game"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></div><div class="menus_item"><a class="site-page" href="/zzhBlog.github.io/artitalk"><i class="fa-fw fa fa-heartbeat"></i><span> 时光</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/zzhBlog.github.io/google"><span> 镜像</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://json.xbyzs.cf"><span> Json格式化</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://draw.xbyzs.cf"><span> Draw画布</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://enkey.xbyzs.cf"><span> EnKey</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2023-03-09T06:49:42.263Z" title="发表于 2023-03-09 14:49:42">2023-03-09</time></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><h1 id="核心配置文件：mybatis-config-xml"><a href="#核心配置文件：mybatis-config-xml" class="headerlink" title="*核心配置文件：mybatis-config.xml*"></a><em><strong>*核心配置文件：mybatis-config.xml*</strong></em></h1><h3 id="1-Mybatis的配置文件"><a href="#1-Mybatis的配置文件" class="headerlink" title="*1.Mybatis的配置文件*"></a><em><strong>*1.Mybatis的配置文件*</strong></em></h3><p>配置</p>
+<p>MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。 配置文档的顶层结构如下：</p>
+<p>configuration（配置） </p>
+<p><a href="#properties">properties（属性）</a></p>
+<p><a href="#settings">settings（设置）</a></p>
+<p><a href="#typeAliases">typeAliases（类型别名）</a></p>
+<p><a href="#typeHandlers">typeHandlers（类型处理器）</a></p>
+<p><a href="#objectFactory">objectFactory（对象工厂）</a></p>
+<p><a href="#plugins">plugins（插件）</a></p>
+<p><a href="#environments">environments（环境配置）</a> </p>
+<p>environment（环境变量） </p>
+<p>transactionManager（事务管理器）</p>
+<p>dataSource（数据源）</p>
+<p><a href="#databaseIdProvider">databaseIdProvider（数据库厂商标识）</a></p>
+<p><a href="#mappers">mappers（映射器）</a></p>
+<h3 id="2-环境配置（environments）"><a href="#2-环境配置（environments）" class="headerlink" title="2. *环境配置（environments）*"></a><strong>2.</strong> <em><strong>*环境配置（environments）*</strong></em></h3><p>Mybatis可以配置成适应多种环境</p>
+<p>注意:尽管可以配置多个环境，但每个SqlSessionFactory实例只能选择一种环境</p>
+<p>学会使用多套运行环境</p>
+<p>Mybatis 默认的事务管理器就是JDBC,连接池就是:POOLED</p>
+<h3 id="3-属性（properties）"><a href="#3-属性（properties）" class="headerlink" title="3. *属性（properties）*"></a><strong>3.</strong> <em><strong>*属性（properties）*</strong></em></h3><p>我们可以通过properties属性来实现引用配置文件</p>
+<p>这些属性可以在外部进行配置，并可以进行动态替换。你既可以在典型的 Java 属性文件中配置这些属性，也可以在 properties 元素的子元素来传递。【db.properties】</p>
+<p>编写配置文件：</p>
+<p>driver &#x3D; com.mysql.jdbc.Driver<br>url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;mybatis?allowPublicKeyRetrieval&#x3D;true&amp;userUnicode&#x3D;true&amp;useSSL&#x3D;false<br>username&#x3D;root<br>password&#x3D;123456</p>
+<p>在核心配置文件种引入</p>
+<h3 id="4-类别名配置"><a href="#4-类别名配置" class="headerlink" title="4. *类别名配置*"></a><strong>4.</strong> <em><strong>*类别名配置*</strong></em></h3><p>类型别名可为 Java 类型设置一个缩写名字。 它仅用于 XML 配置，意在降低冗余的全限定类名书写。</p>
+<typeAliases>
+  <typeAlias type="com.zzh.pojo.User" alias="User"/>（在实体类较少的情况下使用，可自己diy名字）
+
+<p>或者</p>
+<p>​	<package name="com.zzh.pojo"/>（在实体类较多的时候使用，不可以自己diy，但可以通过注解添加名字，如果非要改需要在实体类增加注解@Alias(“myboy”)）</p>
+</typeAliases>
+
+<h3 id="5-设置"><a href="#5-设置" class="headerlink" title="5. *设置*"></a><strong>5.</strong> <em><strong>*设置*</strong></em></h3><p>这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps1.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps2.jpg" alt="img"> </p>
+<h3 id="6-其他配置"><a href="#6-其他配置" class="headerlink" title="6. *其他配置*"></a><strong>6.</strong> <em><strong>*其他配置*</strong></em></h3><p>· <a href="#typeHandlers">typeHandlers（类型处理器）</a></p>
+<p>· <a href="#objectFactory">objectFactory（对象工厂）</a></p>
+<p>· <a href="#plugins">plugins（插件）</a></p>
+<p>\1. mybatis-generator-core</p>
+<p>\2. Mybatis-puls</p>
+<p>\3. 通用mapper</p>
+<h3 id="7-映射器（mappers-）"><a href="#7-映射器（mappers-）" class="headerlink" title="7. *映射器（mappers**）*"></a><strong>7.</strong> <em><strong>*映射器（mappers*</strong></em><em><strong>*）*</strong></em></h3><p>MapperRegistry:注册绑定Mapper文件;</p>
+<p>方式一:<mappers><br>  <mapper resource="com/zzh/dao/UserMapper.xml"/><br></mappers></p>
+<p>方式二:class文件绑定注册</p>
+<mappers>
+**<!--     <mapper resource="com/zzh/dao/UserMapper.xml"/>-->****
+**    <mapper class="com.zzh.dao.UserMapper"/>
+  </mappers>
+
+<p>注意：接口和他的Mapper配置文件必须同名，并且接口和他的Mapper配置文件必须在同一个包下</p>
+<p>方式三:使用扫描包进行注入绑定</p>
+<p><mappers>**<br>**    <package name="com.zzh.dao"/><br></mappers></p>
+<p>注意：接口和他的Mapper配置文件必须同名并且接口和他的Mapper配置文件必须在同一个包下</p>
+<h3 id="8-作用域（Scope）和生命周期"><a href="#8-作用域（Scope）和生命周期" class="headerlink" title="8. *作用域（Scope）和生命周期*"></a><strong>8.</strong> <em><strong>*作用域（Scope）和生命周期*</strong></em></h3><p>理解我们之前讨论过的不同作用域和生命周期类别是至关重要的，因为错误的使用会导致非常严重的并发问题</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps3.jpg" alt="img"> </p>
+<h4 id="SqlSessionFactoryBuilder-：-这个类可以被实例化、使用和丢弃，一旦创建了-SqlSessionFactory，就不再需要它了。（局部变量）"><a href="#SqlSessionFactoryBuilder-：-这个类可以被实例化、使用和丢弃，一旦创建了-SqlSessionFactory，就不再需要它了。（局部变量）" class="headerlink" title="*SqlSessionFactoryBuilder*****：****这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。（局部变量）"></a><em><strong>*SqlSessionFactoryBuilder*</strong></em>****：****这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。（局部变量）</h4><p><em><strong>*SqlSessionFactory*</strong></em><em><strong>*：*</strong></em><em><strong>*就是数据库连接池，一旦创建就必须一直存在，没有任何理由丢弃或者重新创建另一个实例。*</strong></em></p>
+<p>因此 SqlSessionFactory 的最佳作用域是应用作用域。 有很多方法可以做到，最简单的就是使用****单例模式****或者静态单例模式。</p>
+<p><em><strong>*SqlSession*</strong></em>****：****每个线程都应该有它自己的 SqlSession 实例</p>
+<p>连接到连接池的一个请求</p>
+<p>SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。</p>
+<p>用完之后必须赶紧关闭，否则资源被占用</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps4.jpg" alt="img"> </p>
+<p>每一个Mapper就相当于一个具体的业务</p>
+<p><strong>9.</strong>  <em><strong>*解决属性名和字段名不一致的问题*</strong></em></p>
+<p>数据库中的字段:</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps5.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps6.jpg" alt="img"> </p>
+<p>出现问题</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps7.jpg" alt="img"> </p>
+<p>解决方案1:</p>
+<p>​	select ID,NAME, MM as password from mybatis.stu where ID&#x3D;#{id}</p>
+<p><em><strong>*结果集映射*</strong></em></p>
+<p>resultMap 元素是 MyBatis 中最重要最强大的元素。</p>
+<p>ResultMap 的设计思想是，对简单的语句做到零配置，对于复杂一点的语句，只需要描述语句之间的关系就行了。</p>
+<p>ResultMap 的优秀之处——你完全可以不用显式地配置它们。</p>
+<p>解决方案2:<resultMap id="resultMap" type="myboy"><br>  <result column="ID" property="ID"/><br>  <result column="NAME" property="NAME"/><br>  <result column="MM" property="password"/><br></resultMap><br><select id="getUserById" resultMap="resultMap"><br>  select ***** from mybatis.stu where ID&#x3D;#{id}<br></select></p>
+<p><strong>10.</strong> <em><strong>*日志*</strong></em> </p>
+<p><em><strong>*日志工厂*</strong></em></p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps8.jpg" alt="img"> </p>
+<p>|SLF4J </p>
+<p>|LOG4J(掌握)</p>
+<p>|LOG4J2 </p>
+<p>|JDK_LOGGING </p>
+<p>|COMMONS_LOGGING </p>
+<p>| STDOUT_LOGGING （掌握）</p>
+<p>| NO_LOGGING</p>
+<p>在Mybatis具体使用哪个，在设置中决定</p>
+<h1 id="STDOUT-LOGGING-（-标准日志输出-）"><a href="#STDOUT-LOGGING-（-标准日志输出-）" class="headerlink" title="*STDOUT_LOGGING* *（**标准日志输出**）*"></a><em><strong>*STDOUT_LOGGING*</strong></em> <em><strong>*（*</strong></em><em><strong>*标准日志输出*</strong></em><em><strong>*）*</strong></em></h1><p><em><strong>*使用*</strong></em><em><strong>*STDOUT_LOGGING*</strong></em><em><strong>*输出：*</strong></em></p>
+<settings>
+  <setting name="logImpl" value="STDOUT_LOGGING"/>
+</settings>
+
+ 
+
+<p><em><strong>*在Mybatis核心配置文件中，配置我们的日志*</strong></em></p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps9.jpg" alt="img"> </p>
+<p><em><strong>*LOG4J*</strong></em><em><strong>*：*</strong></em></p>
+<p>什么是log4j:</p>
+<p>\1. Log4j是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/8512995">Apache</a>的一个开源项目，通过使用Log4j，我们可以控制日志信息输送的目的地是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8E%A7%E5%88%B6%E5%8F%B0/2438626">控制台</a>、文件、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/GUI">GUI</a>组件</p>
+<p>\2. 可以控制每一条日志的输出格式</p>
+<p>\3. 通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程</p>
+<p>\4. 可以通过一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/286550">配置文件</a>来灵活地进行配置，而不需要修改应用的代码。</p>
+<h3 id="动态sql"><a href="#动态sql" class="headerlink" title="*动态sql:*"></a><em><strong>*动态sql:*</strong></em></h3><p>在 MyBatis 之前的版本中，需要花时间了解大量的元素。借助功能强大的基于 OGNL 的表达式，MyBatis 3 替换了之前的大部分元素，大大精简了元素种类，现在要学习的元素种类比原来的一半还要少。</p>
+<p>· If（）</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps10.jpg" alt="img"> </p>
+<p>· choose (when, otherwise)</p>
+<p>· <img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps11.jpg" alt="img"></p>
+<p>· trim (where, set)</p>
+<p>· Where:<strong>where</strong> 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。而且，若子句的开头为 “AND” 或 “OR”，<strong>where</strong> 元素也会将它们去除。(见if语句)</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps12.jpg" alt="img"> </p>
+<p>· foreach</p>
+<p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps13.jpg" alt="img"> </p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="*缓存*"></a><em><strong>*缓存*</strong></em></h2><p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps14.jpg" alt="img"> </p>
+<p>（&#x3D;&#x3D;和equals的区别</p>
+<p>1、功能不同</p>
+<p>“&#x3D;&#x3D;”是判断两个变量或实例是不是指向同一个内存空间。</p>
+<p>“equals”是判断两个变量或实例所指向的内存空间的值是不是相同。</p>
+<p>2、定义不同</p>
+<p>“equals”在JAVA中是一个方法。</p>
+<p>“&#x3D;&#x3D;”在JAVA中只是一个运算符合。</p>
+<p>）</p>
+<h1 id="一级缓存："><a href="#一级缓存：" class="headerlink" title="*一级缓存：*"></a><em><strong>*一级缓存：*</strong></em></h1><p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps15.jpg" alt="img"> </p>
+<h1 id="二级缓存："><a href="#二级缓存：" class="headerlink" title="*二级缓存：*"></a><em><strong>*二级缓存：*</strong></em></h1><p>\1. 打开二级缓存（<setting name="cacheEnabled" value="true"/>）</p>
+<p>\2. 在UserMapper.xml中使用(<cache />)</p>
+<p>\3. 测试</p>
+<h1 id="Mybatis缓存原理图"><a href="#Mybatis缓存原理图" class="headerlink" title="*Mybatis缓存原理图:*"></a><em><strong>*Mybatis缓存原理图:*</strong></em></h1><p><img src="file:///C:\Users\hasee\AppData\Local\Temp\ksohtml1504\wps16.jpg" alt="img"> </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">郑 则弘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/mybatisl/">https://myzzh1231.github.io/zzhBlog.github.io/2023/03/09/mybatisl/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://myzzh1231.github.io/zzhBlog.github.io" target="_blank">zzhBlog</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/zzhBlog.github.io/images/background.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/zzhBlog.github.io/2023/03/09/MySQL/"><img class="prev-cover" src="/zzhBlog.github.io/images/background.jpg" onerror="onerror=null;src='/zzhBlog.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/zzhBlog.github.io/2023/03/09/mybatis/"><img class="next-cover" src="/zzhBlog.github.io/images/background.jpg" onerror="onerror=null;src='/zzhBlog.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%9Amybatis-config-xml"><span class="toc-number">1.</span> <span class="toc-text">*核心配置文件：mybatis-config.xml*</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Mybatis%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text">*1.Mybatis的配置文件*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%88environments%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. *环境配置（environments）*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B1%9E%E6%80%A7%EF%BC%88properties%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. *属性（properties）*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%B1%BB%E5%88%AB%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. *类别名配置*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. *设置*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. *其他配置*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%98%A0%E5%B0%84%E5%99%A8%EF%BC%88mappers-%EF%BC%89"><span class="toc-number">1.0.7.</span> <span class="toc-text">7. *映射器（mappers**）*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.0.8.</span> <span class="toc-text">8. *作用域（Scope）和生命周期*</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SqlSessionFactoryBuilder-%EF%BC%9A-%E8%BF%99%E4%B8%AA%E7%B1%BB%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%AE%9E%E4%BE%8B%E5%8C%96%E3%80%81%E4%BD%BF%E7%94%A8%E5%92%8C%E4%B8%A2%E5%BC%83%EF%BC%8C%E4%B8%80%E6%97%A6%E5%88%9B%E5%BB%BA%E4%BA%86-SqlSessionFactory%EF%BC%8C%E5%B0%B1%E4%B8%8D%E5%86%8D%E9%9C%80%E8%A6%81%E5%AE%83%E4%BA%86%E3%80%82%EF%BC%88%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">1.0.8.1.</span> <span class="toc-text">*SqlSessionFactoryBuilder*****：****这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。（局部变量）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#STDOUT-LOGGING-%EF%BC%88-%E6%A0%87%E5%87%86%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA-%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">*STDOUT_LOGGING* *（**标准日志输出**）*</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81sql"><span class="toc-number">2.0.1.</span> <span class="toc-text">*动态sql:*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">2.1.</span> <span class="toc-text">*缓存*</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">*一级缓存：*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">*二级缓存：*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="toc-number">5.</span> <span class="toc-text">*Mybatis缓存原理图:*</span></a></li></ol></div></div><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/zzhBlog.github.io/img/avatar.jpg" onerror="this.onerror=null;this.src='/zzhBlog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">郑 则弘</div><div class="author-info__description"></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/chenxz21/bcxm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">微信号: zzh_impl</div></div></div></div></main><footer id="footer" style="background: #FFFFFF"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 郑 则弘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/chenxz21/hexo-theme-bcxm">Bcxm</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/zzhBlog.github.io/js/utils.js"></script><script src="/zzhBlog.github.io/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leancloud-storage@4.10.0/dist/av-min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
